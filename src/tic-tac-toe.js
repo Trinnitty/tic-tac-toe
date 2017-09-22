@@ -9,6 +9,7 @@ class TicTacToe {
         this.win = null; 
         this.Turns = false;
         this.finish = false;
+        this.draw = false;
     }
 
     getCurrentPlayerSymbol() {
@@ -58,48 +59,19 @@ class TicTacToe {
         return this.finish;
     }
 
-    getWinner() {
-            
+    getWinner() {  
         return this.win;    
     }
 
-    noMoreTurns() {
-            
+    noMoreTurns() {    
         return  this.Turns;
     }
 
     isDraw() {
-        var turn = function(){
-            for(var i=0; i<3; i++){
-            for(var j=0; j<3; j++){
-                if(this.arr[i][j]==null){
-                    return false;
-                }
-            }
-        }
-        return true;
-        };
-        var win = function(){
-        if( this.arr[0][0]==this.arr[0][1]&&this.arr[0][0]==this.arr[0][2]&&this.arr[0][2]!=null ||
-            this.arr[0][0]==this.arr[1][0]&&this.arr[1][0]==this.arr[2][0]&&this.arr[2][0]!=null ||
-            this.arr[0][0]==this.arr[1][1]&&this.arr[0][0]==this.arr[2][2]&&this.arr[2][2]!=null ||
-            this.arr[0][1]==this.arr[1][1]&&this.arr[0][1]==this.arr[2][1]&&this.arr[2][1]!=null ||
-            this.arr[1][0]==this.arr[1][1]&&this.arr[1][0]==this.arr[1][2]&&this.arr[1][2]!=null ||
-            this.arr[0][2]==this.arr[1][1]&&this.arr[0][2]==this.arr[2][0]&&this.arr[2][0]!=null ||
-            this.arr[2][0]==this.arr[2][1]&&this.arr[2][0]==this.arr[2][2]&&this.arr[2][2]!=null ||
-            this.arr[0][2]==this.arr[1][2]&&this.arr[1][2]==this.arr[2][2]&&this.arr[2][2]!=null)
-            {
-                return true;
-            }else {return false;}   
-        }
-        // if(!win&&!turn){
-        //     return false;
-        // }
-        if(win){
-            return false;
-        }
-        if(turn){
-            return true;}    
+         if(this.Turns && this.win==null){
+            this.draw = true;
+         }  
+         return this.draw;
     }
 
     getFieldValue(rowIndex, colIndex) {
